@@ -1,0 +1,177 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    margin: 20px auto;
+    max-width: 1200px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.sidebar-left, .sidebar-right {
+    width: 200px;
+    background: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.sidebar-left h2, .sidebar-right h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.sidebar-left p, .sidebar-right ul {
+    font-size: 0.9em;
+}
+
+.sidebar-right ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-right ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-right ul li a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.sidebar-right ul li a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
+    flex: 1;
+    margin: 0 20px;
+}
+
+.task-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.task-form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.task-form .add-btn {
+    padding: 10px;
+    background-color: #6488b1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.task-form .add-btn:hover {
+    background-color: #5c7ca1;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #5c8cb8;
+    font-size: 16px;
+}
+
+.filters a:hover {
+    color: #3e6a8e;
+}
+
+/* Список задач */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-list li {
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.task-list li.completed {
+    background: #e6ffe6;
+}
+
+.task-list li.completed .task-content {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.checkmark {
+    color: #5c84b8;
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.task-content {
+    flex: 1;
+}
+
+.deadline {
+    font-size: 0.9em;
+    color: #777;
+    margin-left: 10px;
+}
+
+.timer {
+    font-size: 0.9em;
+    color: #ff5733;
+    margin-left: 10px;
+}
+
+.timer.expired {
+    color: #dc3545;
+}
+
+/* Действия с задачами */
+.actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+
+.actions a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+}
+
+.actions a:hover {
+    color: #0056b3;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.back-link:hover {
+    color: #0056b3;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+</head>
+<body>
+    <div class="container">
+       
+        <aside class="sidebar-left">
+            <h2>About</h2>
+            <p>Manage your tasks effectively with deadlines and reminders.</p>
+        </aside>
+        
+        
+        <main class="content">
+            <div class="main-content" data-aos="fade-up">
+                <h1>Task Manager</h1>
+
+                <a href="{{ url_for('logout') }}" class="logout-btn">Log out</a>
+
+                
+                <form action="/add" method="POST" class="task-form" data-aos="fade-up">
+                    <input type="text" name="content" placeholder="Add a new task" required>
+                    <input type="text" name="date" placeholder="Deadline date (dd.mm.yyyy)" pattern="\d{2}\.\d{2}\.\d{4}">
+                    <input type="text" name="time" placeholder="Deadline time (hh:mm)" pattern="\d{2}:\d{2}">
+                    <button type="submit" class="add-btn">Add task</button>
+                </form>
+
+                
+                <div class="filters" data-aos="fade-up">
+                    <a href="{{ url_for('index', filter='all') }}">All</a>
+                    <a href="{{ url_for('index', filter='completed') }}">Completed</a>
+                    <a href="{{ url_for('index', filter='pending') }}">Unfulfilled</a>
+                </div>
+
+                
+                <ul class="task-list">
+                    {% for task in tasks %}
+                    <li class="{% if task.completed %}completed{% endif %}" data-aos="fade-up">
+                        {% if task.completed %}
+                        <span class="checkmark">&#10003;</span>
+                        {% endif %}
+                        <span class="task-content">{{ task.content }}</span>
+                        {% if task.deadline and not task.completed %}
+                        <span class="deadline">
+                            Deadline: {{ task.deadline.strftime('%d.%m.%Y %H:%M') }}
+                            <span class="timer" data-deadline="{{ task.deadline.isoformat() }}"></span>
+                        </span>
+                        {% endif %}
+                        <div class="actions">
+                            <a href="/complete/{{ task.id }}">{{ "Cancel" if task.completed else "Execute" }}</a>
+                            <a href="/update/{{ task.id }}">Edit</a>
+                            <a href="/delete/{{ task.id }}">Delete</a>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </main>
+
+   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mo-js/0.288.0/mo.min.js"></script>
+    
+    <script src="{{ url_for('static', filename='timer.js') }}"></script>
+    <script>
+       
+        AOS.init({
+            duration: 1000, 
+        });
+    </script>
+</body>
+</html>
