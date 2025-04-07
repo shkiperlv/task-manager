@@ -1,0 +1,8 @@
+test_add_task (__main__.TaskManagerTestCase.test_add_task) ... ok
+test_delete_task (__main__.TaskManagerTestCase.test_delete_task) ... ok
+test_register_user (__main__.TaskManagerTestCase.test_register_user) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.867s
+
+OK
